@@ -8,11 +8,11 @@ const Header = () => (
 	      <strong>Pokemon Pintar</strong>
 	    </a>
 
-	    <a href role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+	    <button className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
 	      <span aria-hidden="true"></span>
 	      <span aria-hidden="true"></span>
 	      <span aria-hidden="true"></span>
-	    </a>
+	    </button>
 	  </div>
 	</nav>
 );
