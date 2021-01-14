@@ -2,19 +2,22 @@ import React, {useEffect, useState} from 'react';
 import Header from '../../components/Header';
 import {getAllPokemon} from '../../api/listApi';
 import ListAll from './ListAll';
+import ListAppear from './ListAppear';
 
 const List = () => {
   const [data, setData] = useState([]);
   const [count, setCount] = useState(0);
+  const [next, setNext] = useState('');
   const [loading, setLoading] = useState(true);
 
   const getData = () => {
     getAllPokemon()
       .then(({data}) => {
-        const {count, results} = data;
+        const {count, next, results} = data;
 
         setData(results);
         setCount(count);
+        setNext(next);
         setLoading(false);
       })
       .catch(err => {
@@ -42,12 +45,7 @@ const List = () => {
             &emsp;
             <button className="button is-warning">Reset Filter</button>
           </div>
-          <div className="column is-6 has-text-right">
-            Menampilkan
-            <strong> {`1-20`} </strong>
-            dari
-            <strong> {count}</strong>
-          </div>
+          <ListAppear count={count} next={next} />
         </div>
 
         {loading ? <p className="title has-text-centered">Loading...</p> : (
