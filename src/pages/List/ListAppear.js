@@ -2,8 +2,9 @@ import React from 'react';
 
 const ListAppear = ({count, next}) => {
   const renderAppear = () => {
-    const end = new URLSearchParams(next.split('?')[1]).get('offset');
-    const itemAppear = 20;
+    const param = new URLSearchParams(next.split('?')[1]);
+    const end = param.get('offset');
+    const itemAppear = param.get('limit');
     const start = Number(end) - itemAppear + 1;
 
     return `${start} - ${end}`;

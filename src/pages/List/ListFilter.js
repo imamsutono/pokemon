@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {getPokemonType} from '../../api/typeApi';
 import {getAllPokemon, getPokemonByType} from '../../api/listApi';
 
-const ListFilter = ({setData}) => {
+const ListFilter = ({setData, setCount, setNext}) => {
   const [types, setTypes] = useState([{name: 'Select type'}]);
 
   const getType = () => {
@@ -30,7 +30,6 @@ const ListFilter = ({setData}) => {
 
     getPokemonByType(target.value)
       .then(({data}) => {
-        //   count: data?.pokemon?.length || 0,
         let result = [];
 
         try {
@@ -40,7 +39,11 @@ const ListFilter = ({setData}) => {
         } catch (error) {
           console.log(error);
         } finally {
+          const {length} = data.pokemon;
+
           setData(result);
+          setCount(length);
+          setNext(`a?offset=${length}&limit=${length}`);
         }
       })
       .catch(err => {

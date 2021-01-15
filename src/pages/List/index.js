@@ -34,7 +34,7 @@ const List = () => {
 
       <div className="container mt-6">
         <div className="columns">
-          <ListFilter setData={setData} />          
+          <ListFilter setData={setData} setCount={setCount} setNext={setNext} />
           <ListAppear count={count} next={next} />
         </div>
 
