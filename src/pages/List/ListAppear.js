@@ -12,9 +12,9 @@ const ListAppear = ({count, next}) => {
 
   return (
     <div className="column is-6 has-text-right">
-      Menampilkan
+      Showing
       <strong> {renderAppear()} </strong>
-      dari
+      from
       <strong> {count}</strong>
     </div>
   );
