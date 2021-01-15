@@ -16,8 +16,13 @@ const Item = ({name}) => {
   const getDetail = () => {
     getPokemonDetail(name)
       .then(({data}) => {
+        const {front_default} = data.sprites;
+
+        if (front_default) {
+          setPhoto(front_default);
+        }
+
         setTypes(data.types);
-        setPhoto(data?.sprites?.front_default);
       })
       .catch(err => {
         console.log(err);

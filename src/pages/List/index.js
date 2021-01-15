@@ -3,6 +3,7 @@ import Header from '../../components/Header';
 import {getAllPokemon} from '../../api/listApi';
 import ListAll from './ListAll';
 import ListAppear from './ListAppear';
+import ListFilter from './ListFilter';
 
 const List = () => {
   const [data, setData] = useState([]);
@@ -33,18 +34,7 @@ const List = () => {
 
       <div className="container mt-6">
         <div className="columns">
-          <div className="column is-6">
-            Filter by type:
-            <br />
-            <div className="select">
-              <select>
-                <option>Select dropdown</option>
-                <option>With options</option>
-              </select>
-            </div>
-            &emsp;
-            <button className="button is-warning">Reset Filter</button>
-          </div>
+          <ListFilter setData={setData} />          
           <ListAppear count={count} next={next} />
         </div>
 

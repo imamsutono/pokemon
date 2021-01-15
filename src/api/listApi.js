@@ -4,8 +4,12 @@ const getAllPokemon = () => {
   return fetchApi.get('/pokemon');
 };
 
-const getPokemonDetail = async (name) => {
+const getPokemonDetail = (name) => {
   return fetchApi.get(`/pokemon/${name}`);
 };
 
-export {getAllPokemon, getPokemonDetail};
+const getPokemonByType = (type) => {
+  return fetchApi.get(`/type/${type}`);
+};
+
+export {getAllPokemon, getPokemonDetail, getPokemonByType};
