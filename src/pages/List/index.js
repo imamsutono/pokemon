@@ -11,8 +11,8 @@ const List = () => {
   const [next, setNext] = useState('');
   const [loading, setLoading] = useState(true);
 
-  const getData = () => {
-    getAllPokemon()
+  const getData = (offset = 0) => {
+    getAllPokemon(offset)
       .then(({data}) => {
         const {count, next, results} = data;
 
@@ -27,6 +27,23 @@ const List = () => {
       });
   };
   useEffect(getData, []);
+
+  const loadPrev = () => {
+    const param = new URLSearchParams(next.split('?')[1]);
+    const nextOffset = param.get('offset');
+    const limit = param.get('limit');
+
+    if (nextOffset !== '20') {
+      getData(Number(nextOffset) - (Number(limit) * 2));
+    }
+  };
+
+  const loadNext = () => {
+    const param = new URLSearchParams(next.split('?')[1]);
+    const nextOffset = param.get('offset');
+
+    getData(nextOffset);
+  };
 
   return (
     <div className="has-background-light">
@@ -43,6 +60,12 @@ const List = () => {
             <ListAll data={data} />
           </div>
         )}
+        {!loading && data.length ? (
+          <div className="buttons mt-4 pb-6">
+            <button className="button" onClick={loadPrev}>Prev</button>
+            <button className="button" onClick={loadNext}>Next</button>
+          </div>
+        ) : null}
       </div>
     </div>
   );

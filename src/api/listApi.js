@@ -1,7 +1,7 @@
 import fetchApi from './apiUtils';
 
-const getAllPokemon = () => {
-  return fetchApi.get('/pokemon');
+const getAllPokemon = (offset = 0, limit = 20) => {
+  return fetchApi.get(`/pokemon?offset=${offset}&limit=${limit}`);
 };
 
 const getPokemonDetail = (name) => {
