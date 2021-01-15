@@ -4,7 +4,7 @@ const Header = () => (
 	<nav className="navbar" role="navigation" aria-label="main navigation">
 	  <div className="navbar-brand">
 	    <a className="navbar-item" href="https://warungpintar.co.id">
-	      <img src="img/pokeball.svg" width="112" height="28" alt="Pokeball Logo" />
+	      <img src={require('../img/pokeball.svg').default} width="112" height="28" alt="Pokemon Pintar" />
 	      <strong>Pokemon Pintar</strong>
 	    </a>
 
