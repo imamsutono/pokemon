@@ -1,6 +1,6 @@
 import fetchApi from './apiUtils';
 
-const getPokemonDetail = (name = 'gloom') => {
+const getPokemonDetail = (name) => {
   return fetchApi(`/pokemon/${name}`);
 };
 

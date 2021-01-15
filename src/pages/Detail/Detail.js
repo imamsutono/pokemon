@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
 import Header from '../../components/Header';
 import {getPokemonDetail} from '../../api/detailApi';
 import {DetailPhoto, DetailDescription} from './index';
@@ -7,9 +8,10 @@ import './style.css';
 const Detail = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
+  const pokemonName = useParams().name;
 
   const getData = () => {
-    getPokemonDetail()
+    getPokemonDetail(pokemonName)
       .then(({data}) => {
         setData(data);
         setLoading(false);
@@ -19,7 +21,7 @@ const Detail = () => {
         setLoading(false);
       })
   };
-  useEffect(getData, []);
+  useEffect(getData, [pokemonName]);
 
   const renderDetail = () => (
     <div className="container mt-6">
